@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, Component } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { AnimeContext } from "../App";
 import { Link, useLocation } from "react-router-dom";
 import bookIcon from "../Assets/bookIcon.png";
@@ -8,7 +8,7 @@ import "../Styles/nav.css";
 export default function Nav() {
     const location = useLocation();
     const [search, setSearch] = useState('');
-    const { animeData, setAnimeData } = useContext(AnimeContext); 
+    const { setAnimeData } = useContext(AnimeContext); 
 
     const getData = async () => {
         const res = await fetch(`https://api.jikan.moe/v4/anime?q=${search}&limit=20`)
@@ -40,7 +40,8 @@ export default function Nav() {
 
     useEffect(() => {
         getData();
-    }, [search]);
+        // eslint-disable-next-line
+    },[search]);
 
     const navPositionClass = getNavPositionClass();
     const pageTitle = getPageTitle();
@@ -51,7 +52,7 @@ export default function Nav() {
 
     const renderNavLink = (to, imgSrc, altText, navClass) => {
         const isCurrent = isCurrentPage(navClass);
-        const linkClass = isCurrent ? "nav-link current" : "nav-link";
+        //const linkClass = isCurrent ? "nav-link current" : "nav-link";
 
         return (
             <Link to={to} className="link-styles">

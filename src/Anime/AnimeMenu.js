@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import "../Styles/anime.css";
 import { AnimeList } from "./AnimeList";
 import { AnimeInfo } from "./AnimeInfo";
@@ -15,7 +15,7 @@ export default function AnimeMenu() {
   const [animeInfo,setAnimeInfo] = useState();
   const [myAnimeList,setMyAnimeList] = useState([]);
   //const [topAnime, setTopAnime] = useState([]);
-  const {animeData,setAnimeData} = useContext(AnimeContext);  
+  const {animeData} = useContext(AnimeContext);  
 
   const addTo = (anime) => {
     const index=myAnimeList.findIndex( (myanime) => {
